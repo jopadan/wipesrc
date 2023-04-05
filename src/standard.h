@@ -2,7 +2,7 @@
 */
 #ifndef STANDARD_H
 #define STANDARD_H
-
+#include <string>
 #define PAL 0
 
 #endif

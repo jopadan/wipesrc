@@ -100,11 +100,8 @@ void SetKey(uint32_t button, uint16_t code) {
 }
 
 uint16_t GetKey() {
-  int32_t i;
   etc_ExtendedFlag = 0;
   etc_KeyPressed = 0;
-  for (i = 0; etc_KeyPressed == 0; i++)
-    ;
   return etc_Key + (etc_ExtendedFlag << 8);
 }
 

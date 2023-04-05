@@ -11,7 +11,13 @@
 #include "pad.h"
 #include "renderer.h"
 #include <stdio.h>
+#include <GL/glew.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glext.h>
+#include <GL/glcorearb.h>
 #include <GLFW/glfw3.h>
+
 
 int16_t ft = 0;
 char MipMap = 0;
@@ -265,7 +271,11 @@ int main(int argc, char** argv) {
 
   glfwSetKeyCallback(g_window, keyCallback);
   glfwMakeContextCurrent(g_window);
-
+  if(glewInit() != GLEW_OK)
+  {
+  	fprintf(stderr, "Failed to initialize GLEW\n");
+	return EXIT_FAILURE;
+  }
   rendererInit();
   oldmain();
   rendererTerm();

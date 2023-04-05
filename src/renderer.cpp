@@ -1,5 +1,6 @@
 #include "renderer.h"
 #include "libgpu.h"
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <array>
 #include <cstdio>

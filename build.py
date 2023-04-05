@@ -13,35 +13,40 @@ def main():
     os.makedirs('build', exist_ok=True)
 
     cxxflags = [
+        '-march=native',
+        '-mfpmath=sse+387',
+        '-mveclibabi=svml',
         '-g',
-        '-O0',
-        '-fsanitize=address',
+        '-O3',
         '-fno-omit-frame-pointer',
-        '-std=c++20',
-        '-fcolor-diagnostics',
+        '-std=gnu++23',
         '-Werror',
-        '-Wno-constant-conversion',
         '-Wno-deprecated-declarations',
         '-Wno-empty-body',
-        '-Wno-tautological-constant-out-of-range-compare',
-        '-Wunused-but-set-variable',
-        '-Wunused-variable',
+        '-Wno-unused-but-set-variable',
+        '-Wno-unused-variable',
+        '-Wno-unused-result',
         '-DWIPEOUTPC',
         '-DGLFW_INCLUDE_GLCOREARB',
     ]
 
     linkflags = [
+        '-march=native',
+        '-mfpmath=sse+387',
+        '-mveclibabi=svml',
         '-g',
-        '-O0',
-        '-framework', 'OpenGL',
-        '-fsanitize=address',
+        '-O3',
+        '-lGL',
+        '-lGLU',
+        '-lGLEW',
+        '-lglfw',
         '-fno-omit-frame-pointer',
     ]
 
     cxxflags += get_pkg_config('--cflags', 'glfw3')
     linkflags += get_pkg_config('--libs', 'glfw3')
 
-    cxx = 'clang++'
+    cxx = 'g++'
     # cxx = os.path.expanduser('~/Code/include-what-you-use/build/bin/include-what-you-use')
     # cxxflags += ['-Xiwyu', '--check_also=src/*.h']
 

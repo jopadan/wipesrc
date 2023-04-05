@@ -4538,8 +4538,8 @@ void GraphicOptions(MusicPrims* musicPrims, SlideTextures* musicTex, SelectionDa
 
 void ControllerOptions(MusicPrims* musicPrims, SlideTextures* musicTex, SelectionData* selectData, char loadGames[][9], ConfigData* gameData) {
   static int32_t toggle = 0;
-  char controllerstring[20];
-  char configstring[20];
+  std::string controllerstring;
+  std::string configstring;
   char colour1;
   char colour2;
 
@@ -4599,28 +4599,28 @@ void ControllerOptions(MusicPrims* musicPrims, SlideTextures* musicTex, Selectio
 
   switch (orig_controller) {
   case _KEYBOARD:
-    strcpy(configstring, "CONFIGURE KEYBOARD");
-    strcpy(controllerstring, "KEYBOARD");
-    CentreText(configstring, text_data(0, 170, 8), colour2);
+    configstring = "CONFIGURE KEYBOARD";
+    controllerstring = "KEYBOARD";
+    CentreText(configstring.c_str(), text_data(0, 170, 8), colour2);
     break;
   case _MOUSE1:
-    strcpy(configstring, "CONFIGURE MOUSE");
-    strcpy(controllerstring, "MOUSE");
-    CentreText(configstring, text_data(0, 170, 8), colour2);
+    configstring = "CONFIGURE MOUSE";
+    controllerstring = "MOUSE";
+    CentreText(configstring.c_str(), text_data(0, 170, 8), colour2);
     break;
   case _JOYSTICK1:
     if (!JJSJoyConfig()) {
       colour1 = WhiteText;
       colour2 = RedText;
-      strcpy(configstring, "NO JOYSTICK DETECTED");
-      CentreText(configstring, text_data(0, 170, 8), colour2);
+      configstring = "NO JOYSTICK DETECTED";
+      CentreText(configstring.c_str(), text_data(0, 170, 8), colour2);
     }
-    strcpy(controllerstring, "JOYSTICK");
+    controllerstring = "JOYSTICK";
 
     break;
   }
 
-  CentreText(controllerstring, text_data(0, 50, 8), colour1);
+  CentreText(controllerstring.c_str(), text_data(0, 50, 8), colour1);
 }
 
 void ControllerEdit(MusicPrims* musicPrims, SlideTextures* musicTex, SelectionData* selectData, char loadGames[][9], ConfigData* gameData) {
